@@ -2,7 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class PostText extends StatefulWidget {
-  const PostText({Key? key}) : super(key: key);
+  final double? bottomPadding;
+  final double? horizPadding;
+  const PostText({Key? key, this.bottomPadding = 8, this.horizPadding = 12})
+      : super(key: key);
 
   @override
   _PostTextState createState() => _PostTextState();
@@ -37,7 +40,10 @@ class _PostTextState extends State<PostText> {
     }
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12),
+      padding: EdgeInsets.only(
+          left: widget.horizPadding!,
+          right: widget.horizPadding!,
+          bottom: widget.bottomPadding!),
       child: Row(
         children: [
           Expanded(
@@ -46,7 +52,7 @@ class _PostTextState extends State<PostText> {
               text: TextSpan(
                 style: TextStyle(fontSize: 18, color: Colors.black),
                 children: [
-                  TextSpan(
+                  const TextSpan(
                       text: 'Username ',
                       style: TextStyle(fontWeight: FontWeight.w800)),
                   TextSpan(text: finalText),

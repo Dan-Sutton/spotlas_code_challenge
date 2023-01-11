@@ -18,10 +18,16 @@ class _PostState extends State<Post> {
       width: 500,
       color: Colors.grey,
       child: Column(
-        children: [
+        children: const [
           PostImage(),
-          PostToolbar(),
-          PostText(),
+          PostToolbar(
+            vertPadding: 16,
+            horizPadding: 48,
+          ),
+          PostText(
+            bottomPadding: 8,
+            horizPadding: 12,
+          ),
         ],
       ),
     );
