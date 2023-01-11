@@ -11,17 +11,24 @@ class PostText extends StatefulWidget {
 class _PostTextState extends State<PostText> {
   bool expanded = false;
   String text =
-      '000000000011111111112222222222333333333344444444445555555555666666';
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Varius duis at consectetur lorem donec massa sapien faucibus et. Id semper risus in hendrerit gravida rutrum quisque. Nulla facilisi morbi tempus iaculis urna id volutpat. Lacus luctus accumsan tortor posuere ac ut consequat. Interdum velit euismod in pellentesque. Viverra vitae congue eu consequat ac felis donec. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Suspendisse in est ante in nibh mauris. Proin sed libero enim sed faucibus turpis in eu.';
   late String finalText;
   late String showMoreText;
 
   @override
   Widget build(BuildContext context) {
     if (!expanded) {
-      setState(() {
-        finalText = text.substring(0, 51);
-        showMoreText = ' more...';
-      });
+      if (text.length < 51) {
+        setState(() {
+          finalText = text;
+          showMoreText = '';
+        });
+      } else {
+        setState(() {
+          finalText = text.substring(0, 51);
+          showMoreText = ' more...';
+        });
+      }
     } else {
       setState(() {
         finalText = text;
@@ -35,6 +42,7 @@ class _PostTextState extends State<PostText> {
         children: [
           Expanded(
             child: RichText(
+              maxLines: null,
               text: TextSpan(
                 style: TextStyle(fontSize: 18, color: Colors.black),
                 children: [
@@ -47,11 +55,10 @@ class _PostTextState extends State<PostText> {
                         ..onTap = () {
                           setState(() {
                             expanded = !expanded;
-                            print(expanded);
                           });
                         },
                       text: showMoreText,
-                      style: TextStyle(fontWeight: FontWeight.w800)),
+                      style: TextStyle(color: Colors.grey[300])),
                 ],
               ),
             ),

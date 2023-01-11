@@ -15,7 +15,6 @@ class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 1000,
       width: 500,
       color: Colors.grey,
       child: Column(
