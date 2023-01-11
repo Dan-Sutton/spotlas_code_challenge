@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
 
-class PostLocationRow extends StatefulWidget {
+class PostLocationRow extends StatelessWidget {
   const PostLocationRow({Key? key}) : super(key: key);
 
-  @override
-  _PostLocationRowState createState() => _PostLocationRowState();
-}
-
-class _PostLocationRowState extends State<PostLocationRow> {
   @override
   Widget build(BuildContext context) {
     return Container(

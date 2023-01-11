@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
 
-class PostUserRow extends StatefulWidget {
+class PostUserRow extends StatelessWidget {
   const PostUserRow({Key? key}) : super(key: key);
 
-  @override
-  _PostUserRowState createState() => _PostUserRowState();
-}
-
-class _PostUserRowState extends State<PostUserRow> {
   @override
   Widget build(BuildContext context) {
     return Container(

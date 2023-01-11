@@ -20,9 +20,9 @@ class _FeedState extends State<Feed> {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+      body: ListView(
+        shrinkWrap: true,
+        children: <Widget>[
           Post(),
         ],
       ),
