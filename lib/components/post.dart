@@ -19,7 +19,11 @@ class _PostState extends State<Post> {
       width: 500,
       color: Colors.grey,
       child: Column(
-        children: [PostImage(), PostToolbar(), PostText()],
+        children: [
+          PostImage(),
+          PostToolbar(),
+          PostText(),
+        ],
       ),
     );
   }
