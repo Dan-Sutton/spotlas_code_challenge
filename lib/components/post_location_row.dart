@@ -55,7 +55,7 @@ class _PostLocationRowState extends State<PostLocationRow> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
+                                const EdgeInsets.symmetric(horizontal: 5.0),
                             child: Container(
                               width: 4.0,
                               height: 4.0,
