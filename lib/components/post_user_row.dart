@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
 
 class PostUserRow extends StatefulWidget {
   const PostUserRow({Key? key}) : super(key: key);
@@ -58,8 +59,8 @@ class _PostUserRowState extends State<PostUserRow> {
             ],
           ),
           const Icon(
-            Icons.more_horiz,
-            size: 40,
+            Spotlasicons.options,
+            size: 35,
             color: Colors.white,
           )
         ],

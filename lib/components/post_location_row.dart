@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
 
 class PostLocationRow extends StatefulWidget {
   const PostLocationRow({Key? key}) : super(key: key);
@@ -79,8 +80,8 @@ class _PostLocationRowState extends State<PostLocationRow> {
             ],
           ),
           const Icon(
-            Icons.star_border,
-            size: 40,
+            Spotlasicons.star_border,
+            size: 35,
             color: Colors.white,
           )
         ],
