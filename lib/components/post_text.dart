@@ -9,26 +9,48 @@ class PostText extends StatefulWidget {
 }
 
 class _PostTextState extends State<PostText> {
+  bool expanded = false;
+  String text =
+      '000000000011111111112222222222333333333344444444445555555555666666';
+  late String finalText;
+  late String showMoreText;
+
   @override
   Widget build(BuildContext context) {
+    if (!expanded) {
+      setState(() {
+        finalText = text.substring(0, 51);
+        showMoreText = ' more...';
+      });
+    } else {
+      setState(() {
+        finalText = text;
+        showMoreText = ' less...';
+      });
+    }
+
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12),
       child: Row(
         children: [
           Expanded(
             child: RichText(
               text: TextSpan(
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(fontSize: 18, color: Colors.black),
                 children: [
                   TextSpan(
                       text: 'Username ',
                       style: TextStyle(fontWeight: FontWeight.w800)),
-                  TextSpan(
-                      text:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                  TextSpan(text: finalText),
                   TextSpan(
                       recognizer: TapGestureRecognizer()
-                        ..onTap = () => print('Show more tapped!'),
-                      text: 'more...',
+                        ..onTap = () {
+                          setState(() {
+                            expanded = !expanded;
+                            print(expanded);
+                          });
+                        },
+                      text: showMoreText,
                       style: TextStyle(fontWeight: FontWeight.w800)),
                 ],
               ),
