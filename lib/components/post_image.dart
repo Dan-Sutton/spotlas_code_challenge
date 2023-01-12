@@ -83,11 +83,8 @@ class _PostImageState extends State<PostImage> {
             left: 0,
             right: 0,
             bottom: 0,
-            child: Icon(
-              Spotlasicons.heart,
-              size: 85,
-              color: Colors.red,
-            ),
+            child: Icon(Spotlasicons.heart,
+                size: 85, color: Color.fromRGBO(255, 0, 106, 1)),
           ),
       ],
     );

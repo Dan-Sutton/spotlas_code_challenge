@@ -21,8 +21,11 @@ class PostToolbar extends StatelessWidget {
           Icon(Spotlasicons.speech_bubble_border),
           GestureDetector(
             child: context.watch<AppActionsProvider>().liked
-                ? Icon(Spotlasicons.heart)
-                : Icon(Spotlasicons.heart_border),
+                ? const Icon(
+                    Spotlasicons.heart,
+                    color: Color.fromRGBO(255, 0, 106, 1),
+                  )
+                : const Icon(Spotlasicons.heart_border),
             onTap: () => context.read<AppActionsProvider>().like(),
           ),
           Icon(Spotlasicons.paper_plane_border),

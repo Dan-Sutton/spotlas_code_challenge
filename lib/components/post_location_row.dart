@@ -78,13 +78,17 @@ class PostLocationRow extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () => context.read<AppActionsProvider>().save(),
-            child: Icon(
-              context.watch<AppActionsProvider>().saved
-                  ? Spotlasicons.star
-                  : Spotlasicons.star_border,
-              size: 35,
-              color: Colors.white,
-            ),
+            child: context.watch<AppActionsProvider>().saved
+                ? const Icon(
+                    Spotlasicons.star,
+                    size: 35,
+                    color: Color.fromRGBO(255, 195, 0, 1),
+                  )
+                : const Icon(
+                    Spotlasicons.star_border,
+                    size: 35,
+                    color: Colors.white,
+                  ),
           )
         ],
       ),
