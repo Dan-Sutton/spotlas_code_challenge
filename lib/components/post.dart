@@ -16,7 +16,7 @@ class Post extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          const PostImage(),
+          PostImage(image: map['media'][0]['url']),
           const PostToolbar(
             vertPadding: 16,
             horizPadding: 48,

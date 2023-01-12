@@ -3,7 +3,8 @@ import 'package:spotlas_code_challenge/components/post_location_row.dart';
 import 'package:spotlas_code_challenge/components/post_user_row.dart';
 
 class PostImage extends StatefulWidget {
-  const PostImage({Key? key}) : super(key: key);
+  final String image;
+  const PostImage({Key? key, required this.image}) : super(key: key);
 
   @override
   _PostImageState createState() => _PostImageState();
@@ -14,7 +15,7 @@ class _PostImageState extends State<PostImage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.network('https://picsum.photos/500/687'),
+        Image.network(widget.image),
         const Padding(
           padding: EdgeInsets.only(top: 12),
           child: PostUserRow(),

@@ -38,6 +38,8 @@ class _FeedState extends State<Feed> {
                         : ListView.builder(
                             itemCount: value.map.length,
                             itemBuilder: (context, index) {
+                              // print(index);
+                              // print(value.map[index]);
                               return Post(
                                 map: value.map[index],
                               );
