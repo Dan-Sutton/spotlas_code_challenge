@@ -3,14 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:spotlas_code_challenge/components/post.dart';
 import 'package:spotlas_code_challenge/models/feed_data.dart';
 
-class Feed extends StatefulWidget {
+class Feed extends StatelessWidget {
   const Feed({Key? key}) : super(key: key);
 
-  @override
-  _FeedState createState() => _FeedState();
-}
-
-class _FeedState extends State<Feed> {
   @override
   Widget build(BuildContext context) {
     context.read<FeedData>().fetchData;
@@ -50,8 +45,6 @@ class _FeedState extends State<Feed> {
         ));
   }
 }
-
-
 
 // ListView(
 //             shrinkWrap: true,
