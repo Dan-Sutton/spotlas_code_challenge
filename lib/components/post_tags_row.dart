@@ -19,7 +19,7 @@ class PostTagsRow extends StatelessWidget {
                     children: tags != null
                         ? tags!.map((e) {
                             return Padding(
-                              padding: const EdgeInsets.only(left: 12),
+                              padding: const EdgeInsets.only(left: 8),
                               child: PostTag(dispayText: e['display_text']),
                             );
                           }).toList()

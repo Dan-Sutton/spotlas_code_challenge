@@ -30,7 +30,9 @@ class Post extends StatelessWidget {
             bottomPadding: 8,
             horizPadding: 12,
           ),
-           PostTagsRow(tags: map['caption']['tags'],),
+          PostTagsRow(
+            tags: map['caption']['tags'],
+          ),
           Row(
             children: [
               Padding(
