@@ -17,9 +17,9 @@ class Post extends StatelessWidget {
       child: Column(
         children: [
           PostImage(
-            image: map['media'][0]['url'],
-            author: map['author'],
-          ),
+              image: map['media'][0]['url'],
+              author: map['author'],
+              spot: map['spot']),
           const PostToolbar(
             vertPadding: 16,
             horizPadding: 48,

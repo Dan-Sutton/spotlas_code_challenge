@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
 
 class PostLocationRow extends StatelessWidget {
-  const PostLocationRow({Key? key}) : super(key: key);
+  final Map<String, dynamic> spot;
+  const PostLocationRow({Key? key, required this.spot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,25 +16,24 @@ class PostLocationRow extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(right: 12.0),
                     child: CircleAvatar(
                       radius: 32,
                       backgroundColor: Colors.red,
                       child: CircleAvatar(
                         radius: 27,
-                        backgroundImage:
-                            NetworkImage('https://picsum.photos/200'),
+                        backgroundImage: NetworkImage(spot['logo']['url']),
                       ),
                     ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(bottom: 2),
                         child: Text(
-                          'Place Name',
+                          spot['name'],
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
@@ -42,8 +42,8 @@ class PostLocationRow extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const Text(
-                            'Type',
+                          Text(
+                            spot['types'][0]['name'],
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w300,
@@ -59,8 +59,8 @@ class PostLocationRow extends StatelessWidget {
                                   shape: BoxShape.circle, color: Colors.white),
                             ),
                           ),
-                          const Text(
-                            'Location',
+                          Text(
+                            spot['location']['display'],
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w300,
