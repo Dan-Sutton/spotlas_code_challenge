@@ -36,9 +36,11 @@ class _FeedState extends State<Feed> {
                             textAlign: TextAlign.center,
                           )
                         : ListView.builder(
-                            itemCount: 10,
+                            itemCount: value.map.length,
                             itemBuilder: (context, index) {
-                              return Text('TEST');
+                              return Post(
+                                map: value.map[index],
+                              );
                             });
               }),
             ),
