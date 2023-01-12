@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
+import 'package:spotlas_code_challenge/models/appActions.dart';
 
 class PostLocationRow extends StatelessWidget {
   final Map<String, dynamic> spot;
@@ -74,10 +76,15 @@ class PostLocationRow extends StatelessWidget {
               ),
             ],
           ),
-          const Icon(
-            Spotlasicons.star_border,
-            size: 35,
-            color: Colors.white,
+          GestureDetector(
+            onTap: () => context.read<AppActionsProvider>().save(),
+            child: Icon(
+              context.watch<AppActionsProvider>().saved
+                  ? Spotlasicons.star
+                  : Spotlasicons.star_border,
+              size: 35,
+              color: Colors.white,
+            ),
           )
         ],
       ),
