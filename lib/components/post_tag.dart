@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PostTag extends StatelessWidget {
-  const PostTag({Key? key}) : super(key: key);
+  final String dispayText;
+  const PostTag({Key? key, required this.dispayText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class PostTag extends StatelessWidget {
             ]),
         padding: EdgeInsets.all(7),
         child: Text(
-          'Live Music',
+          dispayText,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
         ),
       ),

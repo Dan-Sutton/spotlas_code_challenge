@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:spotlas_code_challenge/components/post_tag.dart';
 
 class PostTagsRow extends StatelessWidget {
-  const PostTagsRow({Key? key}) : super(key: key);
+  final List? tags;
+
+  const PostTagsRow({Key? key, required this.tags}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,29 +13,17 @@ class PostTagsRow extends StatelessWidget {
         Expanded(
           child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: const <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: PostTag(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: PostTag(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: PostTag(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: PostTag(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: PostTag(),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    children: tags != null
+                        ? tags!.map((e) {
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 12),
+                              child: PostTag(dispayText: e['display_text']),
+                            );
+                          }).toList()
+                        : []),
               )),
         ),
       ],
