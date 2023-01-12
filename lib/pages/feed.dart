@@ -43,10 +43,3 @@ class Feed extends StatelessWidget {
         ));
   }
 }
-
-// ListView(
-//             shrinkWrap: true,
-//             children: <Widget>[
-//               Post(),
-//             ],
-//           ),
