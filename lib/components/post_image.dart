@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spotlas_code_challenge/components/post_location_row.dart';
@@ -7,12 +8,15 @@ import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
 import '../models/appActions.dart';
 
 class PostImage extends StatefulWidget {
-  final String image;
+  final List images;
   final Map<String, dynamic> author;
   final Map<String, dynamic> spot;
 
   const PostImage(
-      {Key? key, required this.image, required this.author, required this.spot})
+      {Key? key,
+      required this.images,
+      required this.author,
+      required this.spot})
       : super(key: key);
 
   @override
@@ -40,9 +44,22 @@ class _PostImageState extends State<PostImage> {
       children: [
         GestureDetector(
             onDoubleTap: () => likePost(),
-            child: Image.network(
-              widget.image,
-            )),
+            child: CarouselSlider.builder(
+                itemCount: widget.images.length,
+                itemBuilder: (context, index, realIndex) {
+                  final image = widget.images[index]['url'];
+                  return Image.network(
+                    image,
+
+                    // width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  );
+                },
+                options: CarouselOptions(
+                  enableInfiniteScroll: false,
+                  viewportFraction: 1,
+                  height: 687,
+                ))),
         Padding(
           padding: EdgeInsets.only(top: 12),
           child: PostUserRow(
