@@ -24,6 +24,8 @@ class _FeedState extends State<Feed> {
         shrinkWrap: true,
         children: <Widget>[
           Post(),
+          Post(),
+          Post(),
         ],
       ),
     );
