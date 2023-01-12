@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
 
 class PostUserRow extends StatelessWidget {
-  const PostUserRow({Key? key}) : super(key: key);
+  final Map<String, dynamic> author;
+  const PostUserRow({Key? key, required this.author}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,25 +16,24 @@ class PostUserRow extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(right: 12.0),
                     child: CircleAvatar(
                       radius: 32,
                       backgroundColor: Colors.red,
                       child: CircleAvatar(
                         radius: 27,
-                        backgroundImage:
-                            NetworkImage('https://picsum.photos/200'),
+                        backgroundImage: NetworkImage(author['photo_url']),
                       ),
                     ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Padding(
                         padding: EdgeInsets.only(bottom: 2),
                         child: Text(
-                          'Username',
+                          author['username'],
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
@@ -41,7 +41,7 @@ class PostUserRow extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Name Name',
+                        author['full_name'],
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w300,

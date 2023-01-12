@@ -4,7 +4,10 @@ import 'package:spotlas_code_challenge/components/post_user_row.dart';
 
 class PostImage extends StatefulWidget {
   final String image;
-  const PostImage({Key? key, required this.image}) : super(key: key);
+  final Map<String, dynamic> author;
+
+  const PostImage({Key? key, required this.image, required this.author})
+      : super(key: key);
 
   @override
   _PostImageState createState() => _PostImageState();
@@ -16,9 +19,11 @@ class _PostImageState extends State<PostImage> {
     return Stack(
       children: [
         Image.network(widget.image),
-        const Padding(
+        Padding(
           padding: EdgeInsets.only(top: 12),
-          child: PostUserRow(),
+          child: PostUserRow(
+            author: {...widget.author},
+          ),
         ),
         const Positioned(
           left: 1,
