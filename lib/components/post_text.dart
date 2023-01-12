@@ -21,14 +21,14 @@ class _PostTextState extends State<PostText> {
   @override
   Widget build(BuildContext context) {
     if (!expanded) {
-      if (text.length < 51) {
+      if (text.length < 85) {
         setState(() {
           finalText = text;
           showMoreText = '';
         });
       } else {
         setState(() {
-          finalText = text.substring(0, 51);
+          finalText = text.substring(0, 85);
           showMoreText = ' more...';
         });
       }
