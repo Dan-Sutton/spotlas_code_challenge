@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:spotlas_code_challenge/models/feed_data.dart';
 import 'package:spotlas_code_challenge/pages/feed.dart';
 
 void main() {
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Feed(),
+      home: ChangeNotifierProvider(
+        builder: (context, child) => const Feed(),
+        create: (context) => FeedData(),
+      ),
     );
   }
 }

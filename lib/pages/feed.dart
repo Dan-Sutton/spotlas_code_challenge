@@ -8,24 +8,48 @@ class Feed extends StatefulWidget {
   _FeedState createState() => _FeedState();
 }
 
+// class _FeedState extends State<Feed> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         elevation: 0,
+//         backgroundColor: Colors.transparent,
+//         title: Text(
+//           'Feed',
+//           style: TextStyle(color: Colors.black),
+//         ),
+//       ),
+//       body: ListView(
+//         shrinkWrap: true,
+//         children: <Widget>[
+//           Post(),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
 class _FeedState extends State<Feed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          'Feed',
-          style: TextStyle(color: Colors.black),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          title: Text(
+            'Feed',
+            style: TextStyle(color: Colors.black),
+          ),
         ),
-      ),
-      body: ListView(
-        shrinkWrap: true,
-        children: <Widget>[
-          Post(),
-        ],
-      ),
-    );
+        body: RefreshIndicator(
+          onRefresh: () async {},
+          child: ListView(
+            shrinkWrap: true,
+            children: <Widget>[
+              Post(),
+            ],
+          ),
+        ));
   }
 }
