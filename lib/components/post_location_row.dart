@@ -22,7 +22,7 @@ class PostLocationRow extends StatelessWidget {
                     padding: EdgeInsets.only(right: 12.0),
                     child: CircleAvatar(
                       radius: 32,
-                      backgroundColor: Colors.red,
+                      backgroundColor: Color.fromRGBO(255, 0, 106, 1),
                       child: CircleAvatar(
                         radius: 27,
                         backgroundImage: NetworkImage(spot['logo']['url']),
