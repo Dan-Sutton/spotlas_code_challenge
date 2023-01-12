@@ -17,7 +17,6 @@ class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.grey,
       child: Column(
         children: [
           const PostImage(),
@@ -29,9 +28,20 @@ class _PostState extends State<Post> {
             bottomPadding: 8,
             horizPadding: 12,
           ),
+          const PostTagsRow(),
           Row(
             children: [
-              PostTagsRow(),
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 24),
+                child: Text(
+                  '4 days ago',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey[400],
+                  ),
+                ),
+              ),
             ],
           )
         ],

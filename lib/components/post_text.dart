@@ -64,7 +64,7 @@ class _PostTextState extends State<PostText> {
                           });
                         },
                       text: showMoreText,
-                      style: TextStyle(color: Colors.grey[300])),
+                      style: TextStyle(color: Colors.grey[400])),
                 ],
               ),
             ),
