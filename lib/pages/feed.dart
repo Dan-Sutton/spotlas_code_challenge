@@ -24,7 +24,7 @@ class Feed extends StatelessWidget {
             child: Consumer<FeedData>(
               builder: ((context, value, child) {
                 return value.map.length == 0 && !value.error
-                    ? CircularProgressIndicator()
+                    ? const CircularProgressIndicator()
                     : value.error
                         ? Text(
                             'Something went wrong. ${value.errorMessage}',
@@ -33,8 +33,6 @@ class Feed extends StatelessWidget {
                         : ListView.builder(
                             itemCount: value.map.length,
                             itemBuilder: (context, index) {
-                              // print(index);
-                              // print(value.map[index]);
                               return Post(
                                 map: value.map[index],
                               );

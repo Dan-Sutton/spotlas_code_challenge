@@ -39,7 +39,10 @@ class _PostImageState extends State<PostImage> {
     return Stack(
       children: [
         GestureDetector(
-            onDoubleTap: () => likePost(), child: Image.network(widget.image)),
+            onDoubleTap: () => likePost(),
+            child: Image.network(
+              widget.image,
+            )),
         Padding(
           padding: EdgeInsets.only(top: 12),
           child: PostUserRow(
