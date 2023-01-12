@@ -24,7 +24,9 @@ class Post extends StatelessWidget {
             vertPadding: 16,
             horizPadding: 48,
           ),
-          const PostText(
+          PostText(
+            text: map['caption']['text'],
+            author: map['author']['username'],
             bottomPadding: 8,
             horizPadding: 12,
           ),
