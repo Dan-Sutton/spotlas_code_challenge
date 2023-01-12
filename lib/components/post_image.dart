@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:spotlas_code_challenge/components/post_location_row.dart';
 import 'package:spotlas_code_challenge/components/post_user_row.dart';
+import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
+
+import '../models/appActions.dart';
 
 class PostImage extends StatefulWidget {
   final String image;
@@ -16,11 +20,26 @@ class PostImage extends StatefulWidget {
 }
 
 class _PostImageState extends State<PostImage> {
+  bool showLike = false;
+
+  likePost() {
+    setState(() {
+      showLike = true;
+    });
+    context.read<AppActionsProvider>().like();
+    Future.delayed(Duration(milliseconds: 220)).then(
+      (_) => setState(() {
+        showLike = false;
+      }),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.network(widget.image),
+        GestureDetector(
+            onDoubleTap: () => likePost(), child: Image.network(widget.image)),
         Padding(
           padding: EdgeInsets.only(top: 12),
           child: PostUserRow(
@@ -37,7 +56,19 @@ class _PostImageState extends State<PostImage> {
               spot: {...widget.spot},
             ),
           ),
-        )
+        ),
+        if (showLike)
+          const Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Icon(
+              Spotlasicons.heart,
+              size: 85,
+              color: Colors.red,
+            ),
+          ),
       ],
     );
   }
