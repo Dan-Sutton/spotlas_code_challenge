@@ -12,6 +12,14 @@ class FeedData with ChangeNotifier {
   bool get error => _error;
   String get errorMessage => _errorMessage;
 
+  void saveLocation(String id) {
+    var locId = _map.indexWhere((e) => e['spot']['id'] == id);
+    _map[locId]['spot']['is_saved'] = !_map[locId]['spot']['is_saved'];
+    notifyListeners();
+  }
+
+  // void likeImage(id) {}
+
   Future<void> get fetchData async {
     final response = await get(
       Uri.parse('https://dev.api.spotlas.com/interview/feed?page=1'),
@@ -34,10 +42,10 @@ class FeedData with ChangeNotifier {
     notifyListeners();
   }
 
-  void initialValues() {
-    _map = [];
-    _error = false;
-    _errorMessage = '';
-    notifyListeners();
-  }
+  // void initialValues() {
+  //   _map = [];
+  //   _error = false;
+  //   _errorMessage = '';
+  //   notifyListeners();
+  // }
 }
