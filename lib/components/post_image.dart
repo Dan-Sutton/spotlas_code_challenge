@@ -61,7 +61,7 @@ class _PostImageState extends State<PostImage> {
                   height: 687,
                 ))),
         Padding(
-          padding: EdgeInsets.only(top: 12),
+          padding: const EdgeInsets.only(top: 12),
           child: PostUserRow(
             author: {...widget.author},
           ),

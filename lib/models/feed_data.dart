@@ -20,7 +20,6 @@ class FeedData with ChangeNotifier {
 
   void likeImage(String id) {
     int imgId = _map.indexWhere((e) => e['id'] == id);
-    print(imgId);
     _map[imgId]['relevant_comments'] == null
         ? _map[imgId]['relevant_comments'] = true
         : _map[imgId]['relevant_comments'] = null;

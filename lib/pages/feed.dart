@@ -13,9 +13,14 @@ class Feed extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          title: const Text(
-            'Feed',
-            style: TextStyle(color: Colors.black),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                'Feed',
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
           ),
         ),
         body: RefreshIndicator(
