@@ -10,12 +10,14 @@ class PostImage extends StatefulWidget {
   final List images;
   final Map<String, dynamic> author;
   final Map<String, dynamic> spot;
+  final String id;
 
   const PostImage(
       {Key? key,
       required this.images,
       required this.author,
-      required this.spot})
+      required this.spot,
+      required this.id})
       : super(key: key);
 
   @override
@@ -29,7 +31,7 @@ class _PostImageState extends State<PostImage> {
     setState(() {
       showLike = true;
     });
-    context.read<FeedData>().likeImage(widget.author['id']);
+    context.read<FeedData>().likeImage(widget.id);
     Future.delayed(Duration(milliseconds: 220)).then(
       (_) => setState(() {
         showLike = false;
@@ -39,7 +41,6 @@ class _PostImageState extends State<PostImage> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.author['id']);
     return Stack(
       children: [
         GestureDetector(

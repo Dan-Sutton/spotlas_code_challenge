@@ -22,13 +22,15 @@ class _PostState extends State<Post> {
     return Column(
       children: [
         PostImage(
+            id: widget.map['id'],
             images: widget.map['media'],
             author: widget.map['author'],
             spot: widget.map['spot']),
         PostToolbar(
           vertPadding: 16,
           horizPadding: 48,
-          liked: widget.map['author'],
+          id: widget.map['id'],
+          liked: widget.map['relevant_comments'],
         ),
         PostText(
           text: widget.map['caption']['text'],

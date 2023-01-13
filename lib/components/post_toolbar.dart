@@ -6,14 +6,13 @@ import 'package:spotlas_code_challenge/models/feed_data.dart';
 class PostToolbar extends StatefulWidget {
   final double? vertPadding;
   final double? horizPadding;
-  final Map<String, dynamic> liked;
-
-  final void updateLiked;
+  final String id;
+  final liked;
   const PostToolbar(
       {Key? key,
       this.vertPadding = 16,
       this.horizPadding = 48,
-      this.updateLiked,
+      required this.id,
       required this.liked})
       : super(key: key);
 
@@ -33,14 +32,13 @@ class _PostToolbarState extends State<PostToolbar> {
           Icon(Spotlasicons.map_border),
           Icon(Spotlasicons.speech_bubble_border),
           GestureDetector(
-              child: widget.liked['is_verified']
+              child: widget.liked == true
                   ? const Icon(
                       Spotlasicons.heart,
                       color: Color.fromRGBO(255, 0, 106, 1),
                     )
                   : const Icon(Spotlasicons.heart_border),
-              onTap: () =>
-                  context.read<FeedData>().likeImage(widget.liked['id'])),
+              onTap: () => context.read<FeedData>().likeImage(widget.id)),
           Icon(Spotlasicons.paper_plane_border),
         ],
       ),
