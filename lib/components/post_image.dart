@@ -41,6 +41,7 @@ class _PostImageState extends State<PostImage> {
 
   @override
   Widget build(BuildContext context) {
+    bool loading = false;
     return Stack(
       children: [
         GestureDetector(
@@ -49,34 +50,45 @@ class _PostImageState extends State<PostImage> {
                 itemCount: widget.images.length,
                 itemBuilder: (context, index, realIndex) {
                   final image = widget.images[index]['url'];
-                  return Image.network(
-                    image,
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.cover,
-                  );
+                  return Image.network(image,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover, frameBuilder:
+                          (context, child, frame, wasSynchronouslyLoaded) {
+                    return child;
+                  }, loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  });
                 },
                 options: CarouselOptions(
                   enableInfiniteScroll: false,
                   viewportFraction: 1,
-                  height: 687,
+                  height: 580,
                 ))),
-        Padding(
-          padding: const EdgeInsets.only(top: 12),
-          child: PostUserRow(
-            author: {...widget.author},
-          ),
-        ),
-        Positioned(
-          left: 1,
-          right: 1,
-          bottom: 0,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: 12.0),
-            child: PostLocationRow(
-              spot: {...widget.spot},
+        if (!loading)
+          Padding(
+            padding: const EdgeInsets.only(top: 12),
+            child: PostUserRow(
+              author: {...widget.author},
             ),
           ),
-        ),
+        if (!loading)
+          Positioned(
+            left: 1,
+            right: 1,
+            bottom: 0,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 12.0),
+              child: PostLocationRow(
+                spot: {...widget.spot},
+              ),
+            ),
+          ),
         if (showLike)
           const Positioned(
             top: 0,
