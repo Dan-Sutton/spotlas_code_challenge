@@ -18,7 +18,7 @@ class FeedData with ChangeNotifier {
     notifyListeners();
   }
 
-  // void likeImage(id) {}
+  void likeImage(id) {}
 
   Future<void> get fetchData async {
     final response = await get(

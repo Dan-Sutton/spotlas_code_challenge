@@ -7,38 +7,51 @@ import 'package:spotlas_code_challenge/extensions/post.dart';
 
 import 'post_toolbar.dart';
 
-class Post extends StatelessWidget {
+class Post extends StatefulWidget {
   final Map<String, dynamic> map;
 
   const Post({Key? key, required this.map}) : super(key: key);
 
   @override
+  State<Post> createState() => _PostState();
+}
+
+class _PostState extends State<Post> {
+  @override
   Widget build(BuildContext context) {
+    bool liked = false;
+    updateLiked() {
+      setState(() {
+        liked = !liked;
+      });
+    }
+
     return Column(
       children: [
         PostImage(
-            images: map['media'],
-            author: map['author'],
-            spot: map['spot']),
-        const PostToolbar(
+            images: widget.map['media'],
+            author: widget.map['author'],
+            spot: widget.map['spot']),
+        PostToolbar(
           vertPadding: 16,
           horizPadding: 48,
+          liked: liked,
         ),
         PostText(
-          text: map['caption']['text'],
-          author: map['author']['username'],
+          text: widget.map['caption']['text'],
+          author: widget.map['author']['username'],
           bottomPadding: 8,
           horizPadding: 12,
         ),
         PostTagsRow(
-          tags: map['caption']['tags'],
+          tags: widget.map['caption']['tags'],
         ),
         Row(
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 24),
               child: Text(
-                dateTimePosted,
+                widget.dateTimePosted,
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontSize: 18,

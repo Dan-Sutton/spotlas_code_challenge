@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
-import 'package:spotlas_code_challenge/models/appActions.dart';
 import 'package:spotlas_code_challenge/models/feed_data.dart';
 
 class PostLocationRow extends StatelessWidget {

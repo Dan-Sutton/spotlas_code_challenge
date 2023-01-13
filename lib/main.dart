@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spotlas_code_challenge/models/appActions.dart';
 import 'package:spotlas_code_challenge/models/feed_data.dart';
 import 'package:spotlas_code_challenge/pages/feed.dart';
 
@@ -21,9 +20,6 @@ class MyApp extends StatelessWidget {
       home: MultiProvider(providers: [
         ChangeNotifierProvider(
           create: (_) => FeedData(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => AppActionsProvider(),
         ),
       ], child: const Feed()),
     );

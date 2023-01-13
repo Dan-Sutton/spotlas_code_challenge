@@ -5,8 +5,6 @@ import 'package:spotlas_code_challenge/components/post_location_row.dart';
 import 'package:spotlas_code_challenge/components/post_user_row.dart';
 import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
 
-import '../models/appActions.dart';
-
 class PostImage extends StatefulWidget {
   final List images;
   final Map<String, dynamic> author;
@@ -30,7 +28,7 @@ class _PostImageState extends State<PostImage> {
     setState(() {
       showLike = true;
     });
-    context.read<AppActionsProvider>().like();
+    // context.read<AppActionsProvider>().like();
     Future.delayed(Duration(milliseconds: 220)).then(
       (_) => setState(() {
         showLike = false;
