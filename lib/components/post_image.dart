@@ -51,8 +51,7 @@ class _PostImageState extends State<PostImage> {
                   final image = widget.images[index]['url'];
                   return Image.network(
                     image,
-
-                    // width: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width,
                     fit: BoxFit.cover,
                   );
                 },
