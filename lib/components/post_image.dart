@@ -32,7 +32,7 @@ class _PostImageState extends State<PostImage> {
       showLike = true;
     });
     context.read<FeedData>().likeImage(widget.id);
-    Future.delayed(const Duration(milliseconds: 220)).then(
+    Future.delayed(const Duration(milliseconds: 500)).then(
       (_) => setState(() {
         showLike = false;
       }),
@@ -83,21 +83,24 @@ class _PostImageState extends State<PostImage> {
           right: 1,
           bottom: 0,
           child: Padding(
-            padding: EdgeInsets.only(bottom: 12.0),
+            padding: const EdgeInsets.only(bottom: 12.0),
             child: PostLocationRow(
               spot: {...widget.spot},
             ),
           ),
         ),
-        if (showLike)
-          const Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Icon(Spotlasicons.heart,
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: AnimatedOpacity(
+            opacity: showLike ? 1 : 0,
+            duration: const Duration(milliseconds: 300),
+            child: const Icon(Spotlasicons.heart,
                 size: 85, color: Color.fromRGBO(255, 0, 106, 1)),
           ),
+        ),
       ],
     );
   }

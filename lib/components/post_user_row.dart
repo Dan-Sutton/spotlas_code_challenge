@@ -28,7 +28,7 @@ class PostUserRow extends StatelessWidget {
                         ),
                       ]),
                       child: CircleAvatar(
-                        radius: 32,
+                        radius: 31,
                         backgroundColor: const Color.fromRGBO(255, 0, 106, 1),
                         child: CircleAvatar(
                           radius: 27,

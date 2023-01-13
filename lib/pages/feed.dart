@@ -24,11 +24,13 @@ class Feed extends StatelessWidget {
           ),
         ),
         body: RefreshIndicator(
-          onRefresh: () async {},
+          onRefresh: () async {
+            context.read<FeedData>().fetchData;
+          },
           child: Center(
             child: Consumer<FeedData>(
               builder: ((context, value, child) {
-                return value.map.length == 0 && !value.error
+                return value.map.isEmpty && !value.error
                     ? const CircularProgressIndicator()
                     : value.error
                         ? Text(
