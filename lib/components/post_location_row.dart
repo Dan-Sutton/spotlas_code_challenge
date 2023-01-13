@@ -19,13 +19,23 @@ class PostLocationRow extends StatelessWidget {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(right: 12.0),
-                    child: CircleAvatar(
-                      radius: 32,
-                      backgroundColor: Color.fromRGBO(255, 0, 106, 1),
+                    padding: const EdgeInsets.only(right: 12.0),
+                    child: Container(
+                      decoration:
+                          BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          spreadRadius: 3,
+                          blurRadius: 3,
+                        ),
+                      ]),
                       child: CircleAvatar(
-                        radius: 27,
-                        backgroundImage: NetworkImage(spot['logo']['url']),
+                        radius: 32,
+                        backgroundColor: const Color.fromRGBO(255, 0, 106, 1),
+                        child: CircleAvatar(
+                          radius: 27,
+                          backgroundImage: NetworkImage(spot['logo']['url']),
+                        ),
                       ),
                     ),
                   ),
@@ -33,10 +43,16 @@ class PostLocationRow extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(bottom: 2),
+                        padding: const EdgeInsets.only(bottom: 2),
                         child: Text(
                           spot['name'],
                           style: TextStyle(
+                              shadows: <Shadow>[
+                                Shadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 7,
+                                )
+                              ],
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
                               fontSize: 18),
@@ -47,9 +63,15 @@ class PostLocationRow extends StatelessWidget {
                           Text(
                             spot['types'][0]['name'],
                             style: TextStyle(
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    blurRadius: 7,
+                                  )
+                                ],
                                 color: Colors.white,
-                                fontWeight: FontWeight.w300,
-                                fontSize: 16),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17),
                           ),
                           Padding(
                             padding:
@@ -64,9 +86,9 @@ class PostLocationRow extends StatelessWidget {
                           Text(
                             spot['location']['display'],
                             style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w300,
-                                fontSize: 16),
+                                color: Colors.grey[100],
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17),
                           ),
                         ],
                       )
@@ -79,14 +101,26 @@ class PostLocationRow extends StatelessWidget {
           GestureDetector(
             onTap: () => context.read<FeedData>().saveLocation(spot['id']),
             child: spot['is_saved']
-                ? const Icon(
+                ? Icon(
                     Spotlasicons.star,
-                    size: 35,
+                    size: 34,
                     color: Color.fromRGBO(255, 195, 0, 1),
+                    shadows: <Shadow>[
+                      Shadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 7,
+                      )
+                    ],
                   )
-                : const Icon(
+                : Icon(
                     Spotlasicons.star_border,
-                    size: 35,
+                    size: 34,
+                    shadows: <Shadow>[
+                      Shadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 7,
+                      )
+                    ],
                     color: Colors.white,
                   ),
           )
