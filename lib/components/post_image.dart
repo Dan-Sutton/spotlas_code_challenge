@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:spotlas_code_challenge/components/post_location_row.dart';
 import 'package:spotlas_code_challenge/components/post_user_row.dart';
 import 'package:spotlas_code_challenge/icons/spotlasicons_icons.dart';
+import 'package:spotlas_code_challenge/models/feed_data.dart';
 
 class PostImage extends StatefulWidget {
   final List images;
@@ -28,7 +29,7 @@ class _PostImageState extends State<PostImage> {
     setState(() {
       showLike = true;
     });
-    // context.read<AppActionsProvider>().like();
+    context.read<FeedData>().likeImage(widget.author['id']);
     Future.delayed(Duration(milliseconds: 220)).then(
       (_) => setState(() {
         showLike = false;
@@ -38,6 +39,7 @@ class _PostImageState extends State<PostImage> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.author['id']);
     return Stack(
       children: [
         GestureDetector(

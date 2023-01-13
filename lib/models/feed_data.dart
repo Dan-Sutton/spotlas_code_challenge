@@ -13,12 +13,17 @@ class FeedData with ChangeNotifier {
   String get errorMessage => _errorMessage;
 
   void saveLocation(String id) {
-    var locId = _map.indexWhere((e) => e['spot']['id'] == id);
+    int locId = _map.indexWhere((e) => e['spot']['id'] == id);
     _map[locId]['spot']['is_saved'] = !_map[locId]['spot']['is_saved'];
     notifyListeners();
   }
 
-  void likeImage(id) {}
+  void likeImage(String id) {
+    print(id);
+    int imgId = _map.indexWhere((e) => e['author']['id'] == id);
+    print(imgId);
+    notifyListeners();
+  }
 
   Future<void> get fetchData async {
     final response = await get(

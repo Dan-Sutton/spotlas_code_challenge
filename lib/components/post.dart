@@ -19,13 +19,6 @@ class Post extends StatefulWidget {
 class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
-    bool liked = false;
-    updateLiked() {
-      setState(() {
-        liked = !liked;
-      });
-    }
-
     return Column(
       children: [
         PostImage(
@@ -35,7 +28,7 @@ class _PostState extends State<Post> {
         PostToolbar(
           vertPadding: 16,
           horizPadding: 48,
-          liked: liked,
+          liked: widget.map['author'],
         ),
         PostText(
           text: widget.map['caption']['text'],
