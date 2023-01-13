@@ -32,7 +32,7 @@ class _PostImageState extends State<PostImage> {
       showLike = true;
     });
     context.read<FeedData>().likeImage(widget.id);
-    Future.delayed(Duration(milliseconds: 220)).then(
+    Future.delayed(const Duration(milliseconds: 220)).then(
       (_) => setState(() {
         showLike = false;
       }),
