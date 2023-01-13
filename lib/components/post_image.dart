@@ -41,7 +41,6 @@ class _PostImageState extends State<PostImage> {
 
   @override
   Widget build(BuildContext context) {
-    bool loading = false;
     return Stack(
       children: [
         GestureDetector(
@@ -59,8 +58,11 @@ class _PostImageState extends State<PostImage> {
                     if (loadingProgress == null) {
                       return child;
                     } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
+                      return Center(
+                        child: Container(
+                          height: 580,
+                          color: Colors.grey[400],
+                        ),
                       );
                     }
                   });
@@ -70,25 +72,23 @@ class _PostImageState extends State<PostImage> {
                   viewportFraction: 1,
                   height: 580,
                 ))),
-        if (!loading)
-          Padding(
-            padding: const EdgeInsets.only(top: 12),
-            child: PostUserRow(
-              author: {...widget.author},
+        Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: PostUserRow(
+            author: {...widget.author},
+          ),
+        ),
+        Positioned(
+          left: 1,
+          right: 1,
+          bottom: 0,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 12.0),
+            child: PostLocationRow(
+              spot: {...widget.spot},
             ),
           ),
-        if (!loading)
-          Positioned(
-            left: 1,
-            right: 1,
-            bottom: 0,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 12.0),
-              child: PostLocationRow(
-                spot: {...widget.spot},
-              ),
-            ),
-          ),
+        ),
         if (showLike)
           const Positioned(
             top: 0,
